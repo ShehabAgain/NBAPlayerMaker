@@ -6,11 +6,13 @@ Team=input("What team does he play for?")
 Conference=input("which conference will he represent?")
 A=random.randint(0,2)
 
-#determining the quality of the player's season
+#determining the quality of the player's season and his team
 a=0
+Seed=0
 #good season
 if A ==0:
   print(f"{Player} had a great season! Here are his stats:")
+  Seed=random.randint(1,3)
   Pts=random.randint(25,40)
   Stl=random.randint(1,5)
   Blk=random.randint(2,5)
@@ -23,6 +25,7 @@ if A ==0:
   #average season
 elif A==1:
   print(f"{Player} had an average season. Here are his stats:")
+  Seed=random.randint(3,5)
   Pts=random.randint(15,24)
   Stl=random.randint(0,3)
   Blk=random.randint(0,3)
@@ -32,10 +35,10 @@ elif A==1:
   PlayerVote=random.randint(100,170)
   MediaVote=random.randint(43,75)
 
-  #poor seson
+  #poor season
 else:
   print(f"{Player} had a poor season. Here are his stats:")
-  a==1.3
+  Seed=random.randint(5,8)
   Pts=random.randint(5,14)
   Stl=random.randint(0,2)
   Blk=random.randint(0,3)
@@ -94,6 +97,37 @@ if AScore <= 4 and A<=1:
   print(f"{Player} has made it into this year's all-star game! He will be the {Position} for the {Conference} Conference!")
 else:
   print(f"unfortunately, {Player} did not make it into the {Conference}'s all-star team this year.")
+
+#Determing if the player can lead his team to play-off success in the Western Conference
+WestOpponent= {
+  'OneSeed': "Nuggets",
+  'TwoSeed': "Grizzlies",
+  'ThreeSeed':"Kings",
+  'FourSeed':"Suns",
+  'FiveSeed':"Clippers",
+  'SixSeed':"Warriors",
+  'SevenSeed':"TimberWolves",
+  'EightSeed':"Pelicans"
+}
+
+if Conference == "West" or Conference =="west":
+  a=1
+  b=7
+  print(f"The team's final Seeding was {Seed}")
+  for i in range(len(WestOpponent)):
+    
+    if Seed ==a:
+       print(f" {Player}'s {Team} will go up against the {list(WestOpponent.values())[b]}")
+       break;
+    else:
+       b-=1
+       a+=1
+     
+     
+  
+# EastOpponent= {
+  
+# }
 
 
 
