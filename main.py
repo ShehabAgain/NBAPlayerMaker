@@ -146,3 +146,33 @@ elif Conference =="East" or Conference == "east":
       b-=1
       a+=1
 
+Game=1
+Wins=0
+Loses=0
+
+EOpp1 = list(EastOpponent.values())[b]
+WOpp1=  list(WestOpponent.values())[b]
+for i in range(7):
+   
+  A=int(input("pick 0 or 1 to decide the match"))
+  OppNum = random.randint(0,1)
+  if Conference == "East" or Conference == "east":
+    q=EOpp1
+  else:
+    q=WOpp1
+  if A==OppNum:
+    Wins+=1
+    print(f"The {Team} have won Game {Game} of the Round. The score is now {Wins} - {Loses}")
+    
+  if A != OppNum:
+    Loses+=1
+    print(f"The {Team} have lost Game {Game} of the Round. The score is now {Wins} - {Loses}")
+   
+  if Wins ==4:
+    print(f"The {Team} have beaten the {q} and will move on to Round 2!")
+    break
+  if Loses ==4:
+    print(f"The {Team} have lost to the {q} and are out of this years playoffs")
+    break
+  Game+=1
+    
