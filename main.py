@@ -98,7 +98,7 @@ if AScore <= 4 and A<=1:
 else:
   print(f"unfortunately, {Player} did not make it into the {Conference}'s all-star team this year.")
 
-#Determing if the player can lead his team to play-off success in the Western Conference
+#Determing if the player can lead his team to play-off success in their Conference
 WestOpponent= {
   'OneSeed': "Nuggets",
   'TwoSeed': "Grizzlies",
@@ -110,9 +110,20 @@ WestOpponent= {
   'EightSeed':"Pelicans"
 }
 
+EastOpponent= {
+  'OneSeed': "Bucks",
+  'TwoSeed': "Celtics",
+  'ThreeSeed':"76ers",
+  'FourSeed':"Cavaliers",
+  'FiveSeed':"Knicks",
+  'SixSeed':"Nets",
+  'SevenSeed':"Heat",
+  'EightSeed':"Hawks"
+ }
+a=1
+b=7
+#First Round in Western Conf.
 if Conference == "West" or Conference =="west":
-  a=1
-  b=7
   print(f"The team's final Seeding was {Seed}")
   for i in range(len(WestOpponent)):
     
@@ -120,14 +131,48 @@ if Conference == "West" or Conference =="west":
        print(f" {Player}'s {Team} will go up against the {list(WestOpponent.values())[b]}")
        break;
     else:
-       b-=1
-       a+=1
-     
-     
-  
-# EastOpponent= {
-  
-# }
+      b-=1
+      a+=1
 
 
+#First Round Eastern Conf.
+elif Conference =="East" or Conference == "east":
+  print(f"the team's final seeding was {Seed}")
+  for i in range(len(EastOpponent)):
+    if Seed==a:
+      print(f"{Player}'s {Team} will go up against the {list(EastOpponent.values())[b]} in the first Round")
+      break;
+    else:
+      b-=1
+      a+=1
 
+Game=1
+Wins=0
+Loses=0
+
+EOpp1 = list(EastOpponent.values())[b]
+WOpp1=  list(WestOpponent.values())[b]
+for i in range(7):
+   
+  A=int(input("pick 0 or 1 to decide the match"))
+  OppNum = random.randint(0,1)
+  if Conference == "East" or Conference == "east":
+    q=EOpp1
+  else:
+    q=WOpp1
+  if A==OppNum:
+    Wins+=1
+    print(f"The {Team} have won Game {Game} of the Round. The score is now {Wins} - {Loses}")
+    
+  if A != OppNum:
+    Loses+=1
+    print(f"The {Team} have lost Game {Game} of the Round. The score is now {Wins} - {Loses}")
+   
+  if Wins ==4:
+    print(f"The {Team} have beaten the {q} and will move on to Round 2!")
+    break
+  if Loses ==4:
+    print(f"The {Team} have lost to the {q} and are out of this years playoffs")
+    break
+  Game+=1
+    
